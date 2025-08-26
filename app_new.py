@@ -77,7 +77,7 @@ if submit and task_text:
     if email:
         try:
             gmail_user = 'kumarmilan577@mail.com'
-            gmail_pass = 'smte fcrq aglu xmve'  # Use App Password, NOT regular password
+            gmail_pass = 'bnhn jlmy oasv sfpe'  # Use App Password, NOT regular password
             msg = MIMEMultipart()
             msg['From'] = gmail_user
             msg['To'] = email
@@ -146,4 +146,5 @@ if not st.session_state.df.empty:
             st.session_state.df.to_csv(csv_path, index=False)
 else:
     st.info("No tasks added yet.")
+
 
