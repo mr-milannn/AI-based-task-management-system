@@ -3,14 +3,19 @@ import pandas as pd
 import joblib
 import datetime
 import smtplib
+import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import date
 
 # --- Load ML components ---
-model = joblib.load("D:/infotact/NEW/priority_predictor.joblib")
-tfidf = joblib.load("D:/infotact/NEW/tfidf_vectorizer.joblib")
-le = joblib.load("D:/infotact/NEW/label_encoder.joblib")
+
+base_path = os.path.dirname(__file__)  # folder where app_new.py is located
+
+model = joblib.load(os.path.join(base_path, "priority_predictor.joblib"))
+tfidf = joblib.load(os.path.join(base_path, "tfidf_vectorizer.joblib"))
+le = joblib.load(os.path.join(base_path, "label_encoder.joblib"))
+
 
 # --- Setup Streamlit UI ---
 st.set_page_config(page_title="AI Task Manager", layout="centered")
@@ -141,3 +146,4 @@ if not st.session_state.df.empty:
             st.session_state.df.to_csv(csv_path, index=False)
 else:
     st.info("No tasks added yet.")
+
